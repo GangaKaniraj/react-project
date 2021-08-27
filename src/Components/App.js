@@ -7,6 +7,8 @@ import Header from "./Header";
 import AddContact from "./AddContacts";
 import ContactList from "./ContactList";
 import ContactDetail from "./ContactDetail";
+import ContactCard from "./ContactCard";
+import Delete from "./Delete";
 
 export default function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -23,6 +25,7 @@ export default function App() {
     });
     setContacts(newContactList);
   }
+  
 
   useEffect(() => {
     const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -52,12 +55,33 @@ export default function App() {
             path="/add"
             render={(props) => (
               <AddContact {...props}
-              addContactHandler={addContactHandler} />
+              addContactHandler={addContactHandler} 
+              />
             )}
           />
-
+          <Route 
+            path="/" exact
+            render={(props) => (
+              <ContactCard 
+                {...props}
+                contacts={contacts}
+                getContactId={removeContactHandler}
+              />
+            )}
+          />
+          <Route 
+            path="/Delete"
+            render={(props) => (
+              <Delete 
+                {...props}
+                contacts={contacts}
+                //getContactId={removeContactHandler} 
+              />
+            )}
+          />
           <Route path="/contact/:id" component={ContactDetail} />
         </Switch>
+    
       </Router>
     </div>
   );

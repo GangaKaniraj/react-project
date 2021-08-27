@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ContactCard from "./ContactCard";
+//import Delete from "./Delete";
 
 const ContactList = (props) => {
     console.log(props);
@@ -8,13 +9,13 @@ const ContactList = (props) => {
     const deleteContactHandler = (id) => {
         props.getContactId(id);
     };
-
-
-    const renderContactList = props.contacts.map((contact) => {
+    const renderContactList = props.contacts?.map((contact) => {
         return (
-           <ContactCard contact={contact} clickHandler={deleteContactHandler} key={contact.id}></ContactCard>
+           <ContactCard contact={contact} clickHandler={deleteContactHandler} key={contact.id} ></ContactCard>
         );
     });
+    
+    
     return (
         <div class="main">
             <h2>
@@ -24,7 +25,7 @@ const ContactList = (props) => {
                 </Link>
             </h2>
             <div className="ui celled list">
-            {renderContactList}
+             {renderContactList}
             </div>
         </div>
     )
