@@ -27,7 +27,7 @@ const ContactCard = (props) => {
                 </Link>
             </div>
             <div classname="icon">
-                <Link to="/Delete" >
+                <Link >
                     <i className="trash alternate outline icon"
                     style={{ color: "red", marginTop: "5px", marginBottom:"8px", marginLeft:"88%" }}
                     onClick={() => props.clickHandler(id)}
